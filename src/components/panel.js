@@ -25,6 +25,14 @@ const Panel = () => {
         navigate('/nuevaVenta');
     }
 
+    const irIngresoCliente = () => {
+        navigate('/ingresoCLiente');
+    }
+
+    const irIngresoArticulo = () => {
+        navigate('/ingresoArticulo');
+    }
+
     return(
         <>
             <Container fluid>
@@ -51,7 +59,8 @@ const Panel = () => {
                             <Col xs={12} className="espacio-boton-home">
                                 <Button 
                                     variant="outline-dark" 
-                                    className="tamanio-boton">
+                                    className="tamanio-boton"
+                                    onClick={irIngresoCliente}>
                                     Ingresar Nuevo Cliente
                                     </Button>
                             </Col>
@@ -65,7 +74,8 @@ const Panel = () => {
                             <Col xs={12} className="espacio-boton-home">
                                 <Button 
                                     variant="outline-dark"  
-                                    className="tamanio-boton">
+                                    className="tamanio-boton"
+                                    onClick={irIngresoArticulo}>
                                     Ingresar Nuevo Producto
                                     </Button>
                             </Col>   

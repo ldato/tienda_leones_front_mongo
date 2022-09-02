@@ -28,13 +28,21 @@ const ConsultaArticulo = () => {
 
         const consulta = await fetch('http://localhost:3000/api/articulos/uno/' + codigo.codigo, requestOpciones);
         const articuloConsultado = await consulta.json();
-        setArticulo({
+        console.log(articuloConsultado)
+        if (articuloConsultado.codigo) {
+            setArticulo({
             codigo: articuloConsultado.codigo,
             marca: articuloConsultado.marca,
             precio: articuloConsultado.precioVenta,
             cantidad: articuloConsultado.cantidad,
             tipo: articuloConsultado.tipo
         })
+        } 
+        if (articuloConsultado.error) {
+           alert("No existe un artículo con el codigo provisto en la consulta");
+           window.location.reload(false);
+        }
+       
     }
 
     const handleChange = (e) => {
