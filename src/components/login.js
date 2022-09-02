@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.css";
 import { Button, Col, Container, Row, Form } from "react-bootstrap";
-import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
 
 const Login = () => {
 
@@ -35,7 +35,7 @@ const Login = () => {
         if (user.token) {
             localStorage.setItem('x-access-token', user.token);
             localStorage.setItem('nombre', user.user.nombre);
-            navigate('/Home')
+            navigate('/')
         } else {
             alert(user.message);
         }
@@ -43,7 +43,7 @@ const Login = () => {
 
     return (
         <>
-            <Container>
+            <Container>            
                 <Row className='espacio-superior3'>
                     <h3>Formulario de ingreso al sistema</h3>
                 </Row>

@@ -55,7 +55,7 @@
 }
 
 .espacio-superior4 {
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .espacio-boton-home {
@@ -73,6 +73,8 @@
 .tamanio-boton {
     min-width: 100%;
     width: 100%;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 

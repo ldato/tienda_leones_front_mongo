@@ -21,6 +21,10 @@ const Panel = () => {
         navigate('/articulo');
     }
 
+    const irNuevaVenta = () => {
+        navigate('/nuevaVenta');
+    }
+
     return(
         <>
             <Container fluid>
@@ -31,7 +35,8 @@ const Panel = () => {
                             <Col xs={12} className="espacio-superior4">
                                 <Button 
                                     variant="outline-dark"  
-                                    className="tamanio-boton">
+                                    className="tamanio-boton"
+                                    onClick={irNuevaVenta}>
                                     Nueva Venta
                                     </Button>
                             </Col>
@@ -52,6 +57,20 @@ const Panel = () => {
                             </Col>
                             <Col xs={12} className="espacio-boton-home">
                                 <Button 
+                                    variant="outline-dark"  
+                                    className="tamanio-boton">
+                                    Actulizar Stock Por Articulo
+                                    </Button>
+                            </Col>
+                            <Col xs={12} className="espacio-boton-home">
+                                <Button 
+                                    variant="outline-dark"  
+                                    className="tamanio-boton">
+                                    Ingresar Nuevo Producto
+                                    </Button>
+                            </Col>   
+                            <Col xs={12} className="espacio-boton-home">
+                                <Button 
                                     variant="outline-dark" 
                                     className="tamanio-boton">
                                     Consultar Venta por DNI
@@ -70,14 +89,7 @@ const Panel = () => {
                                     className="tamanio-boton">
                                     Consultar Datos Cliente
                                     </Button>
-                            </Col>
-                            <Col xs={12} className="espacio-boton-home">
-                                <Button 
-                                    variant="outline-dark"  
-                                    className="tamanio-boton">
-                                    Ingresar Nuevo Producto
-                                    </Button>
-                            </Col>
+                            </Col>                                                    
                         </Row>
                     </Col>
                 </Row>
