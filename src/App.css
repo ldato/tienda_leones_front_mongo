@@ -58,12 +58,24 @@
   margin-top: 25px;
 }
 
+.espacio-superior5 {
+  margin-top: 30px;
+}
+
+.espacio-superior6 {
+  margin-bottom: 10px;
+}
+
 .espacio-boton-home {
   margin-top: 15px;
 }
 
 .resaltar-borde {
   border-right: 3px solid black;
+}
+
+.resaltar-borde-inferior {
+  border-bottom: 3px solid black;
 }
 
 .negrita {

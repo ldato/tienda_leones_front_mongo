@@ -26,11 +26,15 @@ const Panel = () => {
     }
 
     const irIngresoCliente = () => {
-        navigate('/ingresoCLiente');
+        navigate('/ingresoCliente');
     }
 
     const irIngresoArticulo = () => {
         navigate('/ingresoArticulo');
+    }
+
+    const irConsultaCliente = () => {
+        navigate('/cliente');
     }
 
     return(
@@ -96,7 +100,8 @@ const Panel = () => {
                             <Col xs={12} className="espacio-boton-home">
                                 <Button 
                                     variant="outline-dark"  
-                                    className="tamanio-boton">
+                                    className="tamanio-boton"
+                                    onClick={irConsultaCliente}>
                                     Consultar Datos Cliente
                                     </Button>
                             </Col>                                                    

@@ -28,7 +28,6 @@ const ConsultaArticulo = () => {
 
         const consulta = await fetch('http://localhost:3000/api/articulos/uno/' + codigo.codigo, requestOpciones);
         const articuloConsultado = await consulta.json();
-        console.log(articuloConsultado)
         if (articuloConsultado.codigo) {
             setArticulo({
             codigo: articuloConsultado.codigo,
@@ -38,7 +37,7 @@ const ConsultaArticulo = () => {
             tipo: articuloConsultado.tipo
         })
         } 
-        if (articuloConsultado.error) {
+        if (articuloConsultado.error=== "null") {
            alert("No existe un artículo con el codigo provisto en la consulta");
            window.location.reload(false);
         }
