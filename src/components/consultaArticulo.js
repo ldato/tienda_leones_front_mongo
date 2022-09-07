@@ -37,7 +37,7 @@ const ConsultaArticulo = () => {
             tipo: articuloConsultado.tipo
         })
         } 
-        if (articuloConsultado.error=== "null") {
+        if (articuloConsultado.error=== 404) {
            alert("No existe un artículo con el codigo provisto en la consulta");
            window.location.reload(false);
         }

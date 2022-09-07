@@ -4,7 +4,7 @@ import Panel from './panel';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addArticulo, addCliente } from '../features/venta/ventaSlice';
+import { addArticulo, addCliente, deleteArticulo, setSubtotal } from '../features/venta/ventaSlice';
 
 const FormVenta = () => {
 
@@ -110,17 +110,27 @@ const FormVenta = () => {
         cantidadArt = parseInt(e.target.value);
     }
 
+    const borrarArticulo = (key) => {
+        dispatch(deleteArticulo(key))
+    }
+
 
     const agregarAVenta = (e) => {
         e.preventDefault()
         console.log(venta)
         let artAdd = {
             articulo: articulo.id,
-            cantidad: cantidadArt,
+            cantidad: cantidadArt === undefined || isNaN(cantidadArt) ? 1 : cantidadArt,
             precioUnitario: articulo.precio,
-            subtotalProducto: cantidadArt * articulo.precio
+            subtotalProducto: (cantidadArt === undefined || isNaN(cantidadArt) ? 1 : cantidadArt) * articulo.precio
         }
+        console.log(artAdd);
         dispatch(addArticulo(artAdd));
+    }
+
+    const irCheckInfoVenta = () => {
+        dispatch(setSubtotal(total));
+        navigate('/checkVenta')
     }
 
     return (
@@ -161,7 +171,7 @@ const FormVenta = () => {
                             <Col xs={3}>
                                 <ListGroup >
                                     <ListGroup.Item className="negrita">Productos: {cantProd}</ListGroup.Item>
-                                    <ListGroup.Item className="negrita">Total: ${total} </ListGroup.Item>
+                                    <ListGroup.Item className="negrita">Total: ${parseFloat(total).toFixed(2)} </ListGroup.Item>
                                 </ListGroup>
                             </Col>
                         </Row>
@@ -203,22 +213,11 @@ const FormVenta = () => {
                                 </Row>
 
                             </Col>
-                            {/* <Col xs={3}>
-                                <ListGroup >
-                                    <ListGroup.Item className="negrita">Código: {articulo.codigo}</ListGroup.Item>
-                                    <ListGroup.Item className="negrita">Marca: {articulo.marca}</ListGroup.Item>
-                                </ListGroup>
-                            </Col>
-                            <Col xs={3}>
-                                <ListGroup >
-                                    <ListGroup.Item className="negrita">Tipo: {articulo.tipo}</ListGroup.Item>
-                                    <ListGroup.Item className="negrita">Precio: ${articulo.precio}</ListGroup.Item>
-                                </ListGroup>
-                            </Col> */}
+
                             <Col xs={3} className="espacio-superior6">
                                 <Form>
                                     <Form.Group className="mb-3">
-                                        <Form.Label>Ingrese la cantidad</Form.Label>
+                                        <Form.Label>Ingrese la cantidad: Si no se ingresa una cantidad, se tomará 1</Form.Label>
                                         <Form.Control
                                             type="number"
                                             placeholder="Ingrese Cantidad"
@@ -245,23 +244,31 @@ const FormVenta = () => {
                                         <th>Cantidad</th>
                                         <th>Precio</th>
                                         <th>Subtotal Art.</th>
+                                        <th>Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {venta.articulos.map(articulo => (
-                                        <tr key={articulo.id}>
+                                    {venta.articulos.map((articulo, index) => (
+                                        <tr key={index}>
                                             <td>{articulo.articulo}</td>
-                                            <td>{articulo.cantidad}</td>                      
+                                            <td>{articulo.cantidad}</td>
                                             <td>${articulo.precioUnitario}</td>
                                             <td>${articulo.precioUnitario * articulo.cantidad}</td>
+                                            <td><Button
+                                                variant="danger"
+                                                onClick={() => borrarArticulo(index)}
+                                            >Eliminar</Button></td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </Table>
-                        </Row>
+                        </Row>  
+                        <Row>
+                            <Col>
+                                <Button onClick={irCheckInfoVenta}>VERIFICAR INFORMACION DE VENTA</Button>
+                            </Col>
+                        </Row>                      
                     </Col>
-
-
                 </Row>
             </Container>
         </>

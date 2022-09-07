@@ -19,10 +19,17 @@ export const ventaSlice = createSlice({
         },
         addCliente: (state, action) => {
             state.dniCliente = action.payload;
-        } 
+        },
+        deleteArticulo: (state, action) => {
+            //const index = state.articulos.findIndex(index => index.key === action.payload);
+            state.articulos.splice(action.payload, 1);
+        },
+        setSubtotal: (state, action) => {
+            state.subTotal = action.payload;
+        }
     }
 });
 
-export const {addArticulo, addCliente} = ventaSlice.actions
+export const {addArticulo, addCliente, deleteArticulo, setSubtotal} = ventaSlice.actions
 
 export default ventaSlice.reducer
