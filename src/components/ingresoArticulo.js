@@ -127,7 +127,9 @@ const IngresoArticulo = () => {
 
                     </Col>
                     <Col xs={9} className="espacio-superior3">
-                        <Row>
+                    <h2>FORMULARIO DE INGRESO DE NUEVO ARTICULO</h2>
+                        <Row className="espacio-superior4">
+                            
                             <Col xs={5} >
                                 <Form>
                                     <Form.Group className="mb-3" controlId="formBasicEmail">

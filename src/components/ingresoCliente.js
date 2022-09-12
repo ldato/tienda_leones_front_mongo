@@ -57,6 +57,7 @@ const IngresoCliente = () => {
 
                     </Col>
                     <Col xs={4} className="espacio-superior3">
+                        <h2>FORMULARIO DE INGRESO DE NUEVO CLIENTE</h2>
                         <Form>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Ingrese el DNI del nuevo cliente</Form.Label>

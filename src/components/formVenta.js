@@ -4,7 +4,7 @@ import Panel from './panel';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addArticulo, addCliente, deleteArticulo, setSubtotal } from '../features/venta/ventaSlice';
+import { addArticulo, addCliente, deleteArticulo, setSubtotal, setTotal } from '../features/venta/ventaSlice';
 
 const FormVenta = () => {
 
@@ -14,7 +14,7 @@ const FormVenta = () => {
     let total = 0;
     let cantProd = 0;
     for (let i = 0; i < venta.articulos.length; i++) {
-        total = total + venta.articulos[i].subtotalProducto;
+        total = total + venta.articulos[i].subTotalProducto;
         cantProd = cantProd + venta.articulos[i].cantidad;
     }
     //console.log(venta.articulos)
@@ -122,7 +122,7 @@ const FormVenta = () => {
             articulo: articulo.id,
             cantidad: cantidadArt === undefined || isNaN(cantidadArt) ? 1 : cantidadArt,
             precioUnitario: articulo.precio,
-            subtotalProducto: (cantidadArt === undefined || isNaN(cantidadArt) ? 1 : cantidadArt) * articulo.precio
+            subTotalProducto: (cantidadArt === undefined || isNaN(cantidadArt) ? 1 : cantidadArt) * articulo.precio
         }
         console.log(artAdd);
         dispatch(addArticulo(artAdd));
@@ -130,7 +130,12 @@ const FormVenta = () => {
 
     const irCheckInfoVenta = () => {
         dispatch(setSubtotal(total));
+        dispatch(setTotal(total));
         navigate('/checkVenta')
+    }
+
+    const limpiarPagina = () => {
+        window.location.reload(false);
     }
 
     return (
@@ -267,7 +272,15 @@ const FormVenta = () => {
                             <Col>
                                 <Button onClick={irCheckInfoVenta}>VERIFICAR INFORMACION DE VENTA</Button>
                             </Col>
-                        </Row>                      
+                        </Row> 
+                        <Row className="espacio-superior4">
+                            <Col>
+                                <Button 
+                                    variant="danger"
+                                    onClick={limpiarPagina}>LIMPIAR VENTA
+                                </Button>
+                            </Col>
+                        </Row>                     
                     </Col>
                 </Row>
             </Container>

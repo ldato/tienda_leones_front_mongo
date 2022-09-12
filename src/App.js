@@ -7,6 +7,7 @@ import IngresoCliente from './components/ingresoCliente';
 import IngresoArticulo from './components/ingresoArticulo';
 import ConsultaCliente from './components/consultaCliente';
 import CheckInfoVenta from './components/checkInfoVenta';
+import ConsultaVentaXDni from './components/consultaVentaXDni';
 import './App.css';
 //import {useSelector} from 'react-redux';
 
@@ -25,6 +26,7 @@ function App() {
         <Route path='/ingresoArticulo' element={<IngresoArticulo/>}/>
         <Route path='/cliente' element={<ConsultaCliente/>}/>
         <Route path='/checkVenta' element={<CheckInfoVenta/>}/>
+        <Route path='/consultaVenta' element={<ConsultaVentaXDni/>}/>
       </Routes>
      </BrowserRouter>
     </div>

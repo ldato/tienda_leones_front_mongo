@@ -37,6 +37,10 @@ const Panel = () => {
         navigate('/cliente');
     }
 
+    const IrConsultaVenta = () => {
+        navigate('/consultaVenta')
+    }
+
     return(
         <>
             <Container fluid>
@@ -86,7 +90,8 @@ const Panel = () => {
                             <Col xs={12} className="espacio-boton-home">
                                 <Button 
                                     variant="outline-dark" 
-                                    className="tamanio-boton">
+                                    className="tamanio-boton"
+                                    onClick={IrConsultaVenta}>                                    
                                     Consultar Venta por DNI
                                     </Button>
                             </Col>
